@@ -1,5 +1,6 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import HeaderSection from "./HeaderSection.tsx/HeaderSection";
+import SearchResults from "./MainSection/SearchResults";
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
         <HeaderSection />
       </GridItem>
       <GridItem area="main" bg="dodgerblue">
-        Main
+        <SearchResults />
       </GridItem>
     </Grid>
   );
