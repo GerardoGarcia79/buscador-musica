@@ -25,10 +25,12 @@ interface FetchAlbumsResponse {
 const useAlbums = () => {
   const [albums, setAlbums] = useState<Album[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
 
+    setIsLoading(true);
     apiClient
       .get<FetchAlbumsResponse>("/2.0", {
         params: {
@@ -38,16 +40,20 @@ const useAlbums = () => {
         },
         signal: controller.signal,
       })
-      .then((res) => setAlbums(res.data.results.albummatches.album))
+      .then((res) => {
+        setIsLoading(false);
+        setAlbums(res.data.results.albummatches.album);
+      })
       .catch((err) => {
         if (err instanceof CanceledError) return;
         setError(err.message);
+        setIsLoading(false);
       });
 
     return () => controller.abort();
   }, []);
 
-  return { albums, error };
+  return { albums, error, isLoading };
 };
 
 export default useAlbums;
