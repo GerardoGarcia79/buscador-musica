@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
 import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import useAlbums from "../../hooks/useAlbums";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
 
 const SearchResults = () => {
-  const { albums, error, isLoading } = useAlbums();
-  const [columns, setColumns] = useState(8); // Default number of columns
+  const { data: albums, error, isLoading } = useAlbums();
+  const [columns, setColumns] = useState(8);
   const [skeletons, setSkeletons] = useState<number[]>([]);
 
   // Function to update column count based on screen width
