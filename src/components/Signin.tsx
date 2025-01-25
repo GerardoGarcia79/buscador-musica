@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { Button, Heading, Input, Text, FormControl } from "@chakra-ui/react";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -30,28 +31,42 @@ const Signin = () => {
   return (
     <div>
       <form onSubmit={(e) => handleSignIn(e)} className="max-w-md m-auto pt-24">
-        <h2 className="font-bold pb-2">Sign in</h2>
-        <p>
-          Don't have an account? <Link to="/signup">Sign up!</Link>
-        </p>
-        <div className="flex flex-col py-4">
-          <input
+        <Heading className="font-bold pb-2">Sign in</Heading>
+        <Text>
+          Don't have an account?{" "}
+          <Link to="/signup">
+            <Text className="underline underline-offset-2 inline">
+              Sign up!
+            </Text>
+          </Link>
+        </Text>
+        <FormControl>
+          <Input
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            className="p-3 mt-4 bg-cyan-100"
+            p={3}
+            mt={4}
             type="email"
           />
-          <input
+          <Input
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
-            className="p-3 mt-4 bg-cyan-100"
+            p={3}
+            mt={4}
             type="password"
           />
-          <button type="submit" disabled={isLoading} className="mt-6 w-full">
+
+          <Button
+            type="submit"
+            disabled={isLoading}
+            colorScheme="blue"
+            w="full"
+            mt={4}
+          >
             Sign in
-          </button>
-          {error && <p className="text-red-600 text-center pt-4">{error}</p>}
-        </div>
+          </Button>
+        </FormControl>
+        {error && <p className="text-red-600 text-center pt-4">{error}</p>}
       </form>
     </div>
   );

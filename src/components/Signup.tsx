@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import { Button, Heading, Input, Text, FormControl } from "@chakra-ui/react";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -30,27 +31,42 @@ const Signup = () => {
   return (
     <div>
       <form onSubmit={(e) => handleSignUp(e)} className="max-w-md m-auto pt-24">
-        <h2 className="font-bold pb-2">Sign up today!</h2>
-        <p>
-          Already have an account? <Link to="/signin">Sign in!</Link>
-        </p>
+        <Heading className="font-bold pb-2">Sign up today!</Heading>
+        <Text>
+          Already have an account?{" "}
+          <Link to="/signin">
+            <Text className="underline underline-offset-2 inline">
+              Sign in!
+            </Text>
+          </Link>
+        </Text>
         <div className="flex flex-col py-4">
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-            className="p-3 mt-4 bg-cyan-100"
-            type="email"
-          />
-          <input
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            className="p-3 mt-4 bg-cyan-100"
-            type="password"
-          />
-          <button type="submit" disabled={isLoading} className="mt-6 w-full">
-            Sign up
-          </button>
-          {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+          <FormControl>
+            <Input
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              p={3}
+              mt={4}
+              type="email"
+            />
+            <Input
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              p={3}
+              mt={4}
+              type="password"
+            />
+            <Button
+              type="submit"
+              colorScheme="blue"
+              disabled={isLoading}
+              mt={4}
+              w="full"
+            >
+              Sign up
+            </Button>
+            {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+          </FormControl>
         </div>
       </form>
     </div>
