@@ -79,13 +79,13 @@ const SearchResults = () => {
         {isLoadingAlbums && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
-              <ResultItemSkeleton key={skeleton} />
+              <ResultItemSkeleton key={`album-skeleton-${skeleton}`} />
             ))}
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.name} item={album} />
+            <ResultItem key={album.url} item={album} />
           ))}
         </SimpleGrid>
       </Box>
@@ -95,13 +95,13 @@ const SearchResults = () => {
         {isLoadingArtists && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
-              <ResultItemSkeleton key={skeleton} />
+              <ResultItemSkeleton key={`artist-skeleton-${skeleton}`} />
             ))}
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {artists.slice(0, columns).map((artist) => (
-            <ResultItem key={artist.name} item={artist} />
+            <ResultItem key={artist.url} item={artist} />
           ))}
         </SimpleGrid>
       </Box>
@@ -111,13 +111,13 @@ const SearchResults = () => {
         {isLoadingTracks && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
-              <ResultItemSkeleton key={skeleton} />
+              <ResultItemSkeleton key={`track-skeleton-${skeleton}`} />
             ))}
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {tracks.slice(0, columns).map((track) => (
-            <ResultItem key={track.name} item={track} />
+            <ResultItem key={track.url} item={track} />
           ))}
         </SimpleGrid>
       </Box>

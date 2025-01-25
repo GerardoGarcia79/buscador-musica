@@ -4,6 +4,7 @@ import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ColorModeSwitch from "../ColorModeSwitch";
+import SearchBar from "../SearchBar";
 
 const HeaderSection = () => {
   const [error, setError] = useState("");
@@ -22,8 +23,9 @@ const HeaderSection = () => {
     }
   };
   return (
-    <HStack justifyContent="space-between">
+    <HStack>
       <Image src={logo} boxSize="50px" />
+      <SearchBar />
       <Flex
         flexDirection={{
           base: "column",
