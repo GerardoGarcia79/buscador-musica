@@ -58,7 +58,7 @@ const SearchResults = () => {
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.name} album={album} />
+            <ResultItem key={album.name} item={album} />
           ))}
         </SimpleGrid>
       </Box>
@@ -73,7 +73,7 @@ const SearchResults = () => {
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.artist} album={album} />
+            <ResultItem key={album.artist} item={album} />
           ))}
         </SimpleGrid>
       </Box>
@@ -88,7 +88,7 @@ const SearchResults = () => {
         )}
         <SimpleGrid columns={columns} spacing={5}>
           {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.url} album={album} />
+            <ResultItem key={album.url} item={album} />
           ))}
         </SimpleGrid>
       </Box>
