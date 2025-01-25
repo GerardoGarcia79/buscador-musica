@@ -1,8 +1,9 @@
-import { Button, Flex, HStack, Image, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../../assets/lastfm-logo.svg";
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ColorModeSwitch from "../ColorModeSwitch";
 
 const HeaderSection = () => {
   const [error, setError] = useState("");
@@ -21,16 +22,17 @@ const HeaderSection = () => {
     }
   };
   return (
-    <Flex justifyContent="space-between">
+    <HStack justifyContent="space-between">
       <Image src={logo} boxSize="60px" />
       <HStack>
-        <Text>{session.user.email}</Text>
+        <Text fontSize="sm">{session.user.email}</Text>
         <Button size="xs" colorScheme="blue" onClick={(e) => handleSignOut(e)}>
           Sign out
         </Button>
+        <ColorModeSwitch />
       </HStack>
       {error && <p className="text-red-600 pt-2">{error}</p>}
-    </Flex>
+    </HStack>
   );
 };
 
