@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import useAlbums from "../../hooks/useAlbums";
 import ResultItem from "./ResultItem";
@@ -76,6 +76,9 @@ const SearchResults = () => {
       {/* Render Albums */}
       <Box my={2}>
         <Heading fontSize="2xl">Albums</Heading>
+        {albums.length === 0 && (
+          <Text>No albums found. Please try again with another name.</Text>
+        )}
         {isLoadingAlbums && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
@@ -84,14 +87,19 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.url} item={album} />
-          ))}
+          {albums.length === 0
+            ? null
+            : albums
+                .slice(0, columns)
+                .map((album) => <ResultItem key={album.url} item={album} />)}
         </SimpleGrid>
       </Box>
       {/* Render Artists */}
       <Box my={2}>
         <Heading fontSize="2xl">Artists</Heading>
+        {albums.length === 0 && (
+          <Text>No artists found. Please try again with another name.</Text>
+        )}
         {isLoadingArtists && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
@@ -100,14 +108,19 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {artists.slice(0, columns).map((artist) => (
-            <ResultItem key={artist.url} item={artist} />
-          ))}
+          {artists.length === 0
+            ? null
+            : artists
+                .slice(0, columns)
+                .map((artist) => <ResultItem key={artist.url} item={artist} />)}
         </SimpleGrid>
       </Box>
       {/* Render Tracks */}
       <Box my={2}>
         <Heading fontSize="2xl">Tracks</Heading>
+        {albums.length === 0 && (
+          <Text>No tracks found. Please try again with another name.</Text>
+        )}
         {isLoadingTracks && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
@@ -116,9 +129,11 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {tracks.slice(0, columns).map((track) => (
-            <ResultItem key={track.url} item={track} />
-          ))}
+          {tracks.length === 0
+            ? null
+            : tracks
+                .slice(0, columns)
+                .map((track) => <ResultItem key={track.url} item={track} />)}
         </SimpleGrid>
       </Box>
     </>
