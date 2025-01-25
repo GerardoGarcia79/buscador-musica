@@ -7,7 +7,7 @@ interface Image {
   size: "small" | "medium" | "large" | "extralarge";
 }
 
-interface Album {
+export interface Album {
   name: string;
   artist: string;
   url: string;
@@ -34,6 +34,7 @@ const useAlbums = () => {
         params: {
           method: "album.search",
           album: "believe",
+          //   limit: 8,
         },
         signal: controller.signal,
       })

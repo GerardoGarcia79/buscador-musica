@@ -1,5 +1,5 @@
 import { Button, Flex, HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../../assets/last-fm-logo.svg";
+import logo from "../../assets/lastfm-logo.svg";
 import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -22,9 +22,9 @@ const HeaderSection = () => {
   };
   return (
     <Flex justifyContent="space-between">
-      <Image background="red" src={logo} boxSize="60px" />
+      <Image src={logo} boxSize="60px" />
       <HStack>
-        <Text>Logged with email: {session.user.email}</Text>
+        <Text>{session.user.email}</Text>
         <Button size="xs" colorScheme="blue" onClick={(e) => handleSignOut(e)}>
           Sign out
         </Button>

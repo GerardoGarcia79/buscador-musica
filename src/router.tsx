@@ -6,7 +6,14 @@ import Home from "./components/Home";
 import PrivateRoute from "./components/PrivateRoute";
 
 export const router = createBrowserRouter([
-  { path: "/", element: <App /> },
+  {
+    path: "/",
+    element: (
+      <PrivateRoute>
+        <App />
+      </PrivateRoute>
+    ),
+  },
   { path: "/signup", element: <Signup /> },
   { path: "/signin", element: <Signin /> },
   {

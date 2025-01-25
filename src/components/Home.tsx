@@ -4,11 +4,11 @@ import SearchResults from "./MainSection/SearchResults";
 
 const Home = () => {
   return (
-    <Grid templateAreas={`"nav" "main"`}>
+    <Grid templateAreas={`"nav" "main"`} p={3}>
       <GridItem area="nav">
         <HeaderSection />
       </GridItem>
-      <GridItem area="main" bg="dodgerblue">
+      <GridItem area="main">
         <SearchResults />
       </GridItem>
     </Grid>

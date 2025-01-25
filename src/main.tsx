@@ -4,12 +4,14 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router.tsx";
 import { AuthContextProvider } from "./context/AuthContext.tsx";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import theme from "./theme.ts";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AuthContextProvider>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
+        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <RouterProvider router={router} />
       </ChakraProvider>
     </AuthContextProvider>
