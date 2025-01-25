@@ -3,9 +3,25 @@ import { useEffect, useState } from "react";
 import useAlbums from "../../hooks/useAlbums";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
+import useTracks from "../../hooks/useTracks";
+import useArtists from "../../hooks/useArtists";
 
 const SearchResults = () => {
-  const { data: albums, error, isLoading } = useAlbums();
+  const {
+    data: albums,
+    error: errorAlbums,
+    isLoading: isLoadingAlbums,
+  } = useAlbums();
+  const {
+    data: tracks,
+    error: errorTracks,
+    isLoading: isLoadingTracks,
+  } = useTracks();
+  const {
+    data: artists,
+    error: errorArtists,
+    isLoading: isLoadingArtists,
+  } = useArtists();
   const [columns, setColumns] = useState(8);
   const [skeletons, setSkeletons] = useState<number[]>([]);
 
@@ -42,14 +58,25 @@ const SearchResults = () => {
 
   return (
     <>
-      {error && (
+      {errorAlbums && (
         <Box color="red.500" textAlign="center" mb={4}>
-          {error}
+          {errorAlbums}
         </Box>
       )}
+      {errorTracks && (
+        <Box color="red.500" textAlign="center" mb={4}>
+          {errorTracks}
+        </Box>
+      )}
+      {errorArtists && (
+        <Box color="red.500" textAlign="center" mb={4}>
+          {errorTracks}
+        </Box>
+      )}
+      {/* Render Albums */}
       <Box my={2}>
         <Heading fontSize="2xl">Albums</Heading>
-        {isLoading && (
+        {isLoadingAlbums && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
               <ResultItemSkeleton key={skeleton} />
@@ -62,9 +89,10 @@ const SearchResults = () => {
           ))}
         </SimpleGrid>
       </Box>
+      {/* Render Artists */}
       <Box my={2}>
         <Heading fontSize="2xl">Artists</Heading>
-        {isLoading && (
+        {isLoadingArtists && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
               <ResultItemSkeleton key={skeleton} />
@@ -72,14 +100,15 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.artist} item={album} />
+          {artists.slice(0, columns).map((artist) => (
+            <ResultItem key={artist.name} item={artist} />
           ))}
         </SimpleGrid>
       </Box>
+      {/* Render Tracks */}
       <Box my={2}>
         <Heading fontSize="2xl">Tracks</Heading>
-        {isLoading && (
+        {isLoadingTracks && (
           <SimpleGrid columns={columns} spacing={5}>
             {skeletons.map((skeleton) => (
               <ResultItemSkeleton key={skeleton} />
@@ -87,8 +116,8 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {albums.slice(0, columns).map((album) => (
-            <ResultItem key={album.url} item={album} />
+          {tracks.slice(0, columns).map((track) => (
+            <ResultItem key={track.name} item={track} />
           ))}
         </SimpleGrid>
       </Box>
