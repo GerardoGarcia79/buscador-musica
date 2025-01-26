@@ -35,13 +35,14 @@ const Signin = () => {
         <Text>
           Don't have an account?{" "}
           <Link to="/signup">
-            <Text className="underline underline-offset-2 inline">
+            <span className="underline underline-offset-2 inline">
               Sign up!
-            </Text>
+            </span>
           </Link>
         </Text>
         <FormControl>
           <Input
+            id="email-input"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
             p={3}
@@ -49,6 +50,7 @@ const Signin = () => {
             type="email"
           />
           <Input
+            id="password-input"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
             p={3}

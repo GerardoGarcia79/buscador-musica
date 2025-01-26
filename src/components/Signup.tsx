@@ -35,14 +35,15 @@ const Signup = () => {
         <Text>
           Already have an account?{" "}
           <Link to="/signin">
-            <Text className="underline underline-offset-2 inline">
+            <span className="underline underline-offset-2 inline">
               Sign in!
-            </Text>
+            </span>
           </Link>
         </Text>
         <div className="flex flex-col py-4">
           <FormControl>
             <Input
+              id="email-input"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
               p={3}
@@ -50,6 +51,7 @@ const Signup = () => {
               type="email"
             />
             <Input
+              id="password-input"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
               p={3}
