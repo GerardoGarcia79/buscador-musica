@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import { Button, Heading, Input, Text, FormControl } from "@chakra-ui/react";
+import {
+  Button,
+  Heading,
+  Input,
+  Text,
+  FormControl,
+  InputRightElement,
+  InputGroup,
+} from "@chakra-ui/react";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +20,8 @@ const Signin = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { signInUser } = UserAuth();
   const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const handleClick = () => setShow(!show);
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -45,25 +57,28 @@ const Signin = () => {
             id="email-input"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            p={3}
-            mt={4}
+            // mt={4}
             type="email"
           />
-          <Input
-            id="password-input"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            p={3}
-            mt={4}
-            type="password"
-          />
-
+          <InputGroup size="md" my={5}>
+            <Input
+              id="password-input"
+              onChange={(e) => setPassword(e.target.value)}
+              pr="4.5rem"
+              type={show ? "text" : "password"}
+              placeholder="Enter password"
+            />
+            <InputRightElement width="3.5rem">
+              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? <FaEyeSlash /> : <FaEye />}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
           <Button
             type="submit"
             disabled={isLoading}
             colorScheme="blue"
             w="full"
-            mt={4}
           >
             Sign in
           </Button>
