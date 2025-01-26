@@ -37,7 +37,7 @@ const HeaderSection = () => {
         <HStack
           justifyContent="flex-end"
           mb={{
-            base: "1",
+            base: "2",
             md: "0",
           }}
         >

@@ -7,6 +7,7 @@ import ShowMoreArtists from "./components/MainSection/ShowMoreArtists";
 import ShowMoreTracks from "./components/MainSection/ShowMoreTracks";
 import Layout from "./Layout";
 import SearchResults from "./components/MainSection/SearchResults";
+import ErrorPage from "./components/ErrorPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
         <Layout />
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage />,
     children: [
       { index: true, element: <SearchResults /> },
       { path: "more-albums", element: <ShowMoreAlbums /> },
