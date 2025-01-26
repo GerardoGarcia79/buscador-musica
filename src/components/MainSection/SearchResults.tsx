@@ -6,6 +6,7 @@ import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
 import useArtists from "../../hooks/useArtists";
 import { Link } from "react-router-dom";
+import { updateColumns } from "../../utils";
 
 const SearchResults = () => {
   const {
@@ -26,35 +27,12 @@ const SearchResults = () => {
   const [columns, setColumns] = useState(8);
   const [skeletons, setSkeletons] = useState<number[]>([]);
 
-  // Function to update column count based on screen width
-  const updateColumns = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 425) {
-      setColumns(1);
-      setSkeletons([1]);
-    } // Mobile
-    if (screenWidth <= 600) {
-      setColumns(2);
-      setSkeletons([1, 2]);
-    } // Mobile large
-    else if (screenWidth <= 768) {
-      setColumns(4);
-      setSkeletons([1, 2, 3, 4]);
-    } // Tablet
-    else if (screenWidth <= 1024) {
-      setColumns(6);
-      setSkeletons([1, 2, 3, 4, 5, 6]);
-    } // Desktop
-    else {
-      setColumns(8);
-      setSkeletons([1, 2, 3, 4, 5, 6, 7, 8]);
-    } // Large Screens
-  };
+  const calculateColumns = () => updateColumns(setColumns, setSkeletons);
 
   useEffect(() => {
-    updateColumns(); // Initial setup
-    window.addEventListener("resize", updateColumns); // Listen for resize
-    return () => window.removeEventListener("resize", updateColumns); // Cleanup on unmount
+    calculateColumns(); // Initial setup
+    window.addEventListener("resize", calculateColumns); // Listen for resize
+    return () => window.removeEventListener("resize", calculateColumns); // Cleanup on unmount
   }, []);
 
   return (
