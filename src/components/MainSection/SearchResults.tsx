@@ -1,10 +1,11 @@
-import { Box, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import useAlbums from "../../hooks/useAlbums";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
 import useArtists from "../../hooks/useArtists";
+import { Link } from "react-router-dom";
 
 const SearchResults = () => {
   const {
@@ -75,7 +76,10 @@ const SearchResults = () => {
       )}
       {/* Render Albums */}
       <Box my={2}>
-        <Heading fontSize="2xl">Albums</Heading>
+        <HStack justifyContent="space-between">
+          <Heading fontSize="2xl">Albums</Heading>
+          <Link to="/more-albums">Show More</Link>
+        </HStack>
         {albums.length === 0 && (
           <Text>No albums found. Please try again with another name.</Text>
         )}
@@ -96,7 +100,10 @@ const SearchResults = () => {
       </Box>
       {/* Render Artists */}
       <Box my={2}>
-        <Heading fontSize="2xl">Artists</Heading>
+        <HStack justifyContent="space-between">
+          <Heading fontSize="2xl">Artists</Heading>
+          <Link to="/more-artists">Show More</Link>
+        </HStack>
         {artists.length === 0 && (
           <Text>No artists found. Please try again with another name.</Text>
         )}
@@ -117,7 +124,10 @@ const SearchResults = () => {
       </Box>
       {/* Render Tracks */}
       <Box my={2}>
-        <Heading fontSize="2xl">Tracks</Heading>
+        <HStack justifyContent="space-between">
+          <Heading fontSize="2xl">Tracks</Heading>
+          <Link to="/more-tracks">Show More</Link>
+        </HStack>
         {tracks.length === 0 && (
           <Text>No tracks found. Please try again with another name.</Text>
         )}
