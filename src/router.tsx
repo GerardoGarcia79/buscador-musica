@@ -9,48 +9,6 @@ import Layout from "./Layout";
 import SearchResults from "./components/MainSection/SearchResults";
 
 export const router = createBrowserRouter([
-  // {
-  //   path: "/",
-  //   element: (
-  //     <PrivateRoute>
-  //       <App />
-  //     </PrivateRoute>
-  //   ),
-  // },
-  // { path: "/signup", element: <Signup /> },
-  // { path: "/signin", element: <Signin /> },
-  // {
-  //   path: "/home",
-  //   element: (
-  //     <PrivateRoute>
-  //       <Home />
-  //     </PrivateRoute>
-  //   ),
-  // },
-  // {
-  //   path: "/more-albums",
-  //   element: (
-  //     <PrivateRoute>
-  //       <ShowMoreAlbums />
-  //     </PrivateRoute>
-  //   ),
-  // },
-  // {
-  //   path: "/more-artists",
-  //   element: (
-  //     <PrivateRoute>
-  //       <ShowMoreArtists />
-  //     </PrivateRoute>
-  //   ),
-  // },
-  // {
-  //   path: "/more-tracks",
-  //   element: (
-  //     <PrivateRoute>
-  //       <ShowMoreTracks />
-  //     </PrivateRoute>
-  //   ),
-  // },
   {
     path: "/",
     element: (
@@ -68,3 +26,46 @@ export const router = createBrowserRouter([
   { path: "signin", element: <Signin /> },
   { path: "signup", element: <Signup /> },
 ]);
+
+// {
+//   path: "/",
+//   element: (
+//     <PrivateRoute>
+//       <App />
+//     </PrivateRoute>
+//   ),
+// },
+// { path: "/signup", element: <Signup /> },
+// { path: "/signin", element: <Signin /> },
+// {
+//   path: "/home",
+//   element: (
+//     <PrivateRoute>
+//       <Home />
+//     </PrivateRoute>
+//   ),
+// },
+// {
+//   path: "/more-albums",
+//   element: (
+//     <PrivateRoute>
+//       <ShowMoreAlbums />
+//     </PrivateRoute>
+//   ),
+// },
+// {
+//   path: "/more-artists",
+//   element: (
+//     <PrivateRoute>
+//       <ShowMoreArtists />
+//     </PrivateRoute>
+//   ),
+// },
+// {
+//   path: "/more-tracks",
+//   element: (
+//     <PrivateRoute>
+//       <ShowMoreTracks />
+//     </PrivateRoute>
+//   ),
+// },
