@@ -2,9 +2,10 @@ import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import useArtists from "../../hooks/useArtists";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
+import React from "react";
 
 const ShowMoreArtists = () => {
-  const { data: artists = [], isLoading: isLoadingArtists } = useArtists();
+  const { data: artists, isLoading: isLoadingArtists } = useArtists();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -37,8 +38,12 @@ const ShowMoreArtists = () => {
           }}
           spacing={5}
         >
-          {artists.map((artist) => (
-            <ResultItem key={artist.url} item={artist} />
+          {artists?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.map((artist) => (
+                <ResultItem key={artist.url} item={artist} />
+              ))}
+            </React.Fragment>
           ))}
         </SimpleGrid>
       </Box>

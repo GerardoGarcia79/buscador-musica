@@ -2,9 +2,10 @@ import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import useAlbums from "../../hooks/useAlbums";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
+import React from "react";
 
 const ShowMoreAlbums = () => {
-  const { data: albums = [], isLoading: isLoadingAlbums } = useAlbums();
+  const { data: albums, isLoading: isLoadingAlbums } = useAlbums();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -37,8 +38,12 @@ const ShowMoreAlbums = () => {
           }}
           spacing={5}
         >
-          {albums.map((album) => (
-            <ResultItem key={album.url} item={album} />
+          {albums?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.map((album) => (
+                <ResultItem key={album.url} item={album} />
+              ))}
+            </React.Fragment>
           ))}
         </SimpleGrid>
       </Box>

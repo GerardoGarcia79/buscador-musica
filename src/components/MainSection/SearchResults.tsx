@@ -27,8 +27,6 @@ const SearchResults = () => {
   const [columns, setColumns] = useState(8);
   const [skeletons, setSkeletons] = useState<number[]>([]);
 
-  console.log(albums);
-
   // Function to update column count based on screen width
   const updateColumns = () => {
     const screenWidth = window.innerWidth;

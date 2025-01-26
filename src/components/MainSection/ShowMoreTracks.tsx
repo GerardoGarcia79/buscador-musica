@@ -2,9 +2,10 @@ import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
+import React from "react";
 
 const ShowMoreTracks = () => {
-  const { data: tracks = [], isLoading: isLoadingTracks } = useTracks();
+  const { data: tracks, isLoading: isLoadingTracks } = useTracks();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -37,8 +38,12 @@ const ShowMoreTracks = () => {
           }}
           spacing={5}
         >
-          {tracks.map((track) => (
-            <ResultItem key={track.url} item={track} />
+          {tracks?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.map((track) => (
+                <ResultItem key={track.url} item={track} />
+              ))}
+            </React.Fragment>
           ))}
         </SimpleGrid>
       </Box>
