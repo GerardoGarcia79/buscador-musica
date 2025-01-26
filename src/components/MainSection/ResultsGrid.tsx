@@ -33,10 +33,14 @@ const ResultsGrid = ({
   return (
     <Box my={2}>
       <HStack justifyContent="space-between">
-        <Heading fontSize="2xl">{item.toUpperCase()}</Heading>
+        <Heading fontSize="3xl" mb={2}>
+          {item.toUpperCase()}
+        </Heading>
         {data?.pages?.[0]?.length !== undefined &&
         data.pages[0].length < columns ? null : (
-          <Link to={moreLink}>Show More</Link>
+          <Link to={moreLink}>
+            <Text as="u">Show More</Text>
+          </Link>
         )}
       </HStack>
       {error && (

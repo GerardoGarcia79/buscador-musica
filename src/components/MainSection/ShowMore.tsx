@@ -1,4 +1,4 @@
-import { Box, Button, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
 import React from "react";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
@@ -10,6 +10,7 @@ import {
 import { Album } from "../../hooks/useAlbums";
 import { Artist } from "../../hooks/useArtists";
 import { Track } from "../../hooks/useTracks";
+import { Link } from "react-router-dom";
 
 interface Props {
   item: "ALBUMS" | "ARTISTS" | "TRACKS";
@@ -39,7 +40,14 @@ const ShowMore = ({
   return (
     <>
       <Box my={2}>
-        <Heading fontSize="2xl">{item}</Heading>
+        <Flex justifyContent="space-between">
+          <Heading fontSize="3xl" mb={2}>
+            {item}
+          </Heading>
+          <Link to="/">
+            <Button variant="outline">Go Back</Button>
+          </Link>
+        </Flex>
         {isLoading && (
           <SimpleGrid
             columns={{

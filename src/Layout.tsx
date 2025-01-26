@@ -9,7 +9,7 @@ const Layout = () => {
         <HeaderSection />
       </GridItem>
       <GridItem area="main">
-        <Box>
+        <Box mt={5}>
           <Outlet />
         </Box>
       </GridItem>

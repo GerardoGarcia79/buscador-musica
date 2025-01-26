@@ -4,6 +4,7 @@ import useArtists from "../../hooks/useArtists";
 import useTracks from "../../hooks/useTracks";
 import { updateColumns } from "../../utils";
 import ResultsGrid from "./ResultsGrid";
+import { Box } from "@chakra-ui/react";
 
 const SearchResults = () => {
   const {
@@ -34,33 +35,39 @@ const SearchResults = () => {
 
   return (
     <>
-      <ResultsGrid
-        columns={columns}
-        data={albums}
-        error={errorAlbums}
-        isLoading={isLoadingAlbums}
-        item="albums"
-        moreLink="/more-albums"
-        skeletons={skeletons}
-      />
-      <ResultsGrid
-        columns={columns}
-        data={artists}
-        error={errorArtists}
-        isLoading={isLoadingArtists}
-        item="artists"
-        moreLink="/more-artists"
-        skeletons={skeletons}
-      />
-      <ResultsGrid
-        columns={columns}
-        data={tracks}
-        error={errorTracks}
-        isLoading={isLoadingTracks}
-        item="tracks"
-        moreLink="/more-tracks"
-        skeletons={skeletons}
-      />
+      <Box mb={10}>
+        <ResultsGrid
+          columns={columns}
+          data={albums}
+          error={errorAlbums}
+          isLoading={isLoadingAlbums}
+          item="albums"
+          moreLink="/more-albums"
+          skeletons={skeletons}
+        />
+      </Box>
+      <Box mb={10}>
+        <ResultsGrid
+          columns={columns}
+          data={artists}
+          error={errorArtists}
+          isLoading={isLoadingArtists}
+          item="artists"
+          moreLink="/more-artists"
+          skeletons={skeletons}
+        />
+      </Box>
+      <Box mb={10}>
+        <ResultsGrid
+          columns={columns}
+          data={tracks}
+          error={errorTracks}
+          isLoading={isLoadingTracks}
+          item="tracks"
+          moreLink="/more-tracks"
+          skeletons={skeletons}
+        />
+      </Box>
     </>
   );
 };

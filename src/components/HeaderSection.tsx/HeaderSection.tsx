@@ -42,7 +42,6 @@ const HeaderSection = () => {
           }}
         >
           <Button
-            mr={1}
             size="xs"
             colorScheme="blue"
             onClick={(e) => handleSignOut(e)}
@@ -55,6 +54,7 @@ const HeaderSection = () => {
               base: "none",
               md: "inline",
             }}
+            mx={2}
           >
             {session.user.email}
           </Text>
