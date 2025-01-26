@@ -61,6 +61,7 @@ const useData = <T>(endpoint: string, matchesKey: string) => {
       const response = await apiClient.get<FetchResponse<T>>(endpoint, {
         params: {
           page: pageParam,
+          limit: 30,
         },
       });
       const matches = response.data.results[matchesKey];
@@ -68,7 +69,7 @@ const useData = <T>(endpoint: string, matchesKey: string) => {
       return matches[key] || [];
     },
     getNextPageParam: (lastPage, allPages) => {
-      return lastPage.length < 24 ? allPages.length + 1 : undefined;
+      return lastPage.length < 30 ? undefined : allPages.length + 1;
     },
     staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });

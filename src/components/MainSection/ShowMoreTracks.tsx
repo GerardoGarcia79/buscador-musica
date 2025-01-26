@@ -1,11 +1,17 @@
-import { Box, Heading, SimpleGrid } from "@chakra-ui/react";
+import { Box, Button, Heading, SimpleGrid } from "@chakra-ui/react";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
 import React from "react";
 
 const ShowMoreTracks = () => {
-  const { data: tracks, isLoading: isLoadingTracks } = useTracks();
+  const {
+    data: tracks,
+    isLoading: isLoadingTracks,
+    isFetchingNextPage,
+    hasNextPage,
+    fetchNextPage,
+  } = useTracks();
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -47,6 +53,13 @@ const ShowMoreTracks = () => {
           ))}
         </SimpleGrid>
       </Box>
+      {hasNextPage && (
+        <Box display="flex" justifyContent="center">
+          <Button onClick={() => fetchNextPage()} mt={2} mb={3}>
+            {isFetchingNextPage ? "Loading..." : "Load More"}
+          </Button>
+        </Box>
+      )}
     </>
   );
 };
