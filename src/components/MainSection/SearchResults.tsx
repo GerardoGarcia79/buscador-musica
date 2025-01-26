@@ -6,7 +6,6 @@ import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
 import useArtists from "../../hooks/useArtists";
 import { Link } from "react-router-dom";
-import React from "react";
 
 const SearchResults = () => {
   const {
@@ -94,24 +93,24 @@ const SearchResults = () => {
             ))}
           </SimpleGrid>
         )}
+
+        {/*  */}
+
         <SimpleGrid columns={columns} spacing={5}>
           {albums?.pages[0].length === 0
             ? null
-            : albums?.pages.map((page, index) => (
-                <React.Fragment key={index}>
-                  {page.slice(0, columns).map((album) => (
-                    <ResultItem key={album.url} item={album} />
-                  ))}
-                </React.Fragment>
-              ))}
+            : albums?.pages[0]
+                .slice(0, columns)
+                .map((album) => <ResultItem key={album.url} item={album} />)}
         </SimpleGrid>
       </Box>
+
       {/* Render Artists */}
       <Box my={2}>
         <HStack justifyContent="space-between">
           <Heading fontSize="2xl">Artists</Heading>
-          {albums?.pages?.[0]?.length !== undefined &&
-          albums.pages[0].length < columns ? null : (
+          {artists?.pages?.[0]?.length !== undefined &&
+          artists.pages[0].length < columns ? null : (
             <Link to="/more-artists">Show More</Link>
           )}
         </HStack>
@@ -128,21 +127,17 @@ const SearchResults = () => {
         <SimpleGrid columns={columns} spacing={5}>
           {artists?.pages[0].length === 0
             ? null
-            : artists?.pages.map((page, index) => (
-                <React.Fragment key={index}>
-                  {page.slice(0, columns).map((artist) => (
-                    <ResultItem key={artist.url} item={artist} />
-                  ))}
-                </React.Fragment>
-              ))}
+            : artists?.pages[0]
+                .slice(0, columns)
+                .map((artist) => <ResultItem key={artist.url} item={artist} />)}
         </SimpleGrid>
       </Box>
       {/* Render Tracks */}
       <Box my={2}>
         <HStack justifyContent="space-between">
           <Heading fontSize="2xl">Tracks</Heading>
-          {albums?.pages?.[0]?.length !== undefined &&
-          albums.pages[0].length < columns ? null : (
+          {tracks?.pages?.[0]?.length !== undefined &&
+          tracks.pages[0].length < columns ? null : (
             <Link to="/more-tracks">Show More</Link>
           )}
         </HStack>
@@ -159,13 +154,9 @@ const SearchResults = () => {
         <SimpleGrid columns={columns} spacing={5}>
           {tracks?.pages[0].length === 0
             ? null
-            : tracks?.pages.map((page, index) => (
-                <React.Fragment key={index}>
-                  {page.slice(0, columns).map((track) => (
-                    <ResultItem key={track.url} item={track} />
-                  ))}
-                </React.Fragment>
-              ))}
+            : tracks?.pages[0]
+                .slice(0, columns)
+                .map((tracks) => <ResultItem key={tracks.url} item={tracks} />)}
         </SimpleGrid>
       </Box>
     </>
