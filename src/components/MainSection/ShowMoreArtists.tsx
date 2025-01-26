@@ -19,7 +19,7 @@ const ShowMoreArtists = () => {
     <>
       {/* Render Albums */}
       <Box my={2}>
-        <Heading fontSize="2xl">Artists</Heading>
+        <Heading fontSize="2xl">ARTISTS</Heading>
         {isLoadingArtists && (
           <SimpleGrid
             columns={{

@@ -19,7 +19,7 @@ const ShowMoreTracks = () => {
     <>
       {/* Render Albums */}
       <Box my={2}>
-        <Heading fontSize="2xl">Tracks</Heading>
+        <Heading fontSize="2xl">TRACKS</Heading>
         {isLoadingTracks && (
           <SimpleGrid
             columns={{

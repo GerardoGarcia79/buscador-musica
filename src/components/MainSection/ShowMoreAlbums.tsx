@@ -19,7 +19,7 @@ const ShowMoreAlbums = () => {
     <>
       {/* Render Albums */}
       <Box my={2}>
-        <Heading fontSize="2xl">Albums</Heading>
+        <Heading fontSize="2xl">ALBUMS</Heading>
         {isLoadingAlbums && (
           <SimpleGrid
             columns={{
