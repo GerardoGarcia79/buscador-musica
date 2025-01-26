@@ -43,7 +43,7 @@
 
 // export default useData;
 
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
 
 export interface FetchResponse<T> {
@@ -55,13 +55,20 @@ export interface FetchResponse<T> {
 }
 
 const useData = <T>(endpoint: string, matchesKey: string) => {
-  return useQuery<T[], Error>({
+  return useInfiniteQuery<T[], Error>({
     queryKey: [endpoint, matchesKey],
-    queryFn: async () => {
-      const response = await apiClient.get<FetchResponse<T>>(endpoint);
+    queryFn: async ({ pageParam = 1 }) => {
+      const response = await apiClient.get<FetchResponse<T>>(endpoint, {
+        params: {
+          page: pageParam,
+        },
+      });
       const matches = response.data.results[matchesKey];
       const key = Object.keys(matches)[0];
       return matches[key] || [];
+    },
+    getNextPageParam: (lastPage, allPages) => {
+      return lastPage.length < 24 ? allPages.length + 1 : undefined;
     },
     staleTime: 1000 * 60 * 5, // Cache for 5 minutes
   });

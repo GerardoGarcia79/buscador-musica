@@ -6,25 +6,28 @@ import ResultItemSkeleton from "./ResultItemSkeleton";
 import useTracks from "../../hooks/useTracks";
 import useArtists from "../../hooks/useArtists";
 import { Link } from "react-router-dom";
+import React from "react";
 
 const SearchResults = () => {
   const {
-    data: albums = [],
+    data: albums,
     error: errorAlbums,
     isLoading: isLoadingAlbums,
   } = useAlbums();
   const {
-    data: tracks = [],
+    data: tracks,
     error: errorTracks,
     isLoading: isLoadingTracks,
   } = useTracks();
   const {
-    data: artists = [],
+    data: artists,
     error: errorArtists,
     isLoading: isLoadingArtists,
   } = useArtists();
   const [columns, setColumns] = useState(8);
   const [skeletons, setSkeletons] = useState<number[]>([]);
+
+  console.log(albums);
 
   // Function to update column count based on screen width
   const updateColumns = () => {
@@ -80,7 +83,7 @@ const SearchResults = () => {
           <Heading fontSize="2xl">Albums</Heading>
           <Link to="/more-albums">Show More</Link>
         </HStack>
-        {albums.length === 0 && (
+        {albums?.pages[0].length === 0 && (
           <Text>No albums found. Please try again with another name.</Text>
         )}
         {isLoadingAlbums && (
@@ -91,11 +94,15 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {albums.length === 0
+          {albums?.pages[0].length === 0
             ? null
-            : albums
-                .slice(0, columns)
-                .map((album) => <ResultItem key={album.url} item={album} />)}
+            : albums?.pages.map((page, index) => (
+                <React.Fragment key={index}>
+                  {page.slice(0, columns).map((album) => (
+                    <ResultItem key={album.url} item={album} />
+                  ))}
+                </React.Fragment>
+              ))}
         </SimpleGrid>
       </Box>
       {/* Render Artists */}
@@ -104,7 +111,7 @@ const SearchResults = () => {
           <Heading fontSize="2xl">Artists</Heading>
           <Link to="/more-artists">Show More</Link>
         </HStack>
-        {artists.length === 0 && (
+        {artists?.pages[0].length === 0 && (
           <Text>No artists found. Please try again with another name.</Text>
         )}
         {isLoadingArtists && (
@@ -115,11 +122,15 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {artists.length === 0
+          {artists?.pages[0].length === 0
             ? null
-            : artists
-                .slice(0, columns)
-                .map((artist) => <ResultItem key={artist.url} item={artist} />)}
+            : artists?.pages.map((page, index) => (
+                <React.Fragment key={index}>
+                  {page.slice(0, columns).map((artist) => (
+                    <ResultItem key={artist.url} item={artist} />
+                  ))}
+                </React.Fragment>
+              ))}
         </SimpleGrid>
       </Box>
       {/* Render Tracks */}
@@ -128,7 +139,7 @@ const SearchResults = () => {
           <Heading fontSize="2xl">Tracks</Heading>
           <Link to="/more-tracks">Show More</Link>
         </HStack>
-        {tracks.length === 0 && (
+        {tracks?.pages[0].length === 0 && (
           <Text>No tracks found. Please try again with another name.</Text>
         )}
         {isLoadingTracks && (
@@ -139,11 +150,15 @@ const SearchResults = () => {
           </SimpleGrid>
         )}
         <SimpleGrid columns={columns} spacing={5}>
-          {tracks.length === 0
+          {tracks?.pages[0].length === 0
             ? null
-            : tracks
-                .slice(0, columns)
-                .map((track) => <ResultItem key={track.url} item={track} />)}
+            : tracks?.pages.map((page, index) => (
+                <React.Fragment key={index}>
+                  {page.slice(0, columns).map((track) => (
+                    <ResultItem key={track.url} item={track} />
+                  ))}
+                </React.Fragment>
+              ))}
         </SimpleGrid>
       </Box>
     </>
