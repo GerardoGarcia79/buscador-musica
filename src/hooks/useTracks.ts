@@ -25,11 +25,7 @@
 
 import useData from "./useData";
 import useStore from "../store";
-
-interface Image {
-  "#text": string;
-  size: "small" | "medium" | "large" | "extralarge";
-}
+import { Image } from "../entities/image";
 
 export interface Track {
   name: string;
