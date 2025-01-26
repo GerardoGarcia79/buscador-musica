@@ -17,7 +17,7 @@ const Signin = () => {
     try {
       const result = await signInUser(email, password);
       if (result?.success) {
-        navigate("/home");
+        navigate("/");
       } else {
         setError(result?.error.message);
       }

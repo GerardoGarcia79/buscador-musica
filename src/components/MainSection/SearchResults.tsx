@@ -57,8 +57,6 @@ const SearchResults = () => {
     window.addEventListener("resize", updateColumns); // Listen for resize
     return () => window.removeEventListener("resize", updateColumns); // Cleanup on unmount
   }, []);
-  console.log(columns);
-  console.log(albums?.pages?.[0]?.length);
 
   return (
     <>

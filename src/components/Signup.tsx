@@ -17,7 +17,7 @@ const Signup = () => {
     try {
       const result = await signUpNewUser(email, password);
       if (result.success) {
-        navigate("/home");
+        navigate("/");
       } else {
         setError(result.error.message);
       }
