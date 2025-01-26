@@ -57,6 +57,8 @@ const SearchResults = () => {
     window.addEventListener("resize", updateColumns); // Listen for resize
     return () => window.removeEventListener("resize", updateColumns); // Cleanup on unmount
   }, []);
+  console.log(columns);
+  console.log(albums?.pages?.[0]?.length);
 
   return (
     <>
@@ -79,7 +81,10 @@ const SearchResults = () => {
       <Box my={2}>
         <HStack justifyContent="space-between">
           <Heading fontSize="2xl">Albums</Heading>
-          <Link to="/more-albums">Show More</Link>
+          {albums?.pages?.[0]?.length !== undefined &&
+          albums.pages[0].length < columns ? null : (
+            <Link to="/more-albums">Show More</Link>
+          )}
         </HStack>
         {albums?.pages[0].length === 0 && (
           <Text>No albums found. Please try again with another name.</Text>
@@ -107,7 +112,10 @@ const SearchResults = () => {
       <Box my={2}>
         <HStack justifyContent="space-between">
           <Heading fontSize="2xl">Artists</Heading>
-          <Link to="/more-artists">Show More</Link>
+          {albums?.pages?.[0]?.length !== undefined &&
+          albums.pages[0].length < columns ? null : (
+            <Link to="/more-artists">Show More</Link>
+          )}
         </HStack>
         {artists?.pages[0].length === 0 && (
           <Text>No artists found. Please try again with another name.</Text>
@@ -135,7 +143,10 @@ const SearchResults = () => {
       <Box my={2}>
         <HStack justifyContent="space-between">
           <Heading fontSize="2xl">Tracks</Heading>
-          <Link to="/more-tracks">Show More</Link>
+          {albums?.pages?.[0]?.length !== undefined &&
+          albums.pages[0].length < columns ? null : (
+            <Link to="/more-tracks">Show More</Link>
+          )}
         </HStack>
         {tracks?.pages[0].length === 0 && (
           <Text>No tracks found. Please try again with another name.</Text>
