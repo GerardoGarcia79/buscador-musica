@@ -8,17 +8,17 @@ import useArtists from "../../hooks/useArtists";
 
 const SearchResults = () => {
   const {
-    data: albums,
+    data: albums = [],
     error: errorAlbums,
     isLoading: isLoadingAlbums,
   } = useAlbums();
   const {
-    data: tracks,
+    data: tracks = [],
     error: errorTracks,
     isLoading: isLoadingTracks,
   } = useTracks();
   const {
-    data: artists,
+    data: artists = [],
     error: errorArtists,
     isLoading: isLoadingArtists,
   } = useArtists();
@@ -60,17 +60,17 @@ const SearchResults = () => {
     <>
       {errorAlbums && (
         <Box color="red.500" textAlign="center" mb={4}>
-          {errorAlbums}
+          {errorAlbums.message}
         </Box>
       )}
       {errorTracks && (
         <Box color="red.500" textAlign="center" mb={4}>
-          {errorTracks}
+          {errorTracks.message}
         </Box>
       )}
       {errorArtists && (
         <Box color="red.500" textAlign="center" mb={4}>
-          {errorTracks}
+          {errorArtists.message}
         </Box>
       )}
       {/* Render Albums */}
@@ -97,7 +97,7 @@ const SearchResults = () => {
       {/* Render Artists */}
       <Box my={2}>
         <Heading fontSize="2xl">Artists</Heading>
-        {albums.length === 0 && (
+        {artists.length === 0 && (
           <Text>No artists found. Please try again with another name.</Text>
         )}
         {isLoadingArtists && (
@@ -118,7 +118,7 @@ const SearchResults = () => {
       {/* Render Tracks */}
       <Box my={2}>
         <Heading fontSize="2xl">Tracks</Heading>
-        {albums.length === 0 && (
+        {tracks.length === 0 && (
           <Text>No tracks found. Please try again with another name.</Text>
         )}
         {isLoadingTracks && (
