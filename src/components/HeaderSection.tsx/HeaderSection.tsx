@@ -1,7 +1,7 @@
 import { Button, Flex, HStack, Image, Text } from "@chakra-ui/react";
 import logo from "../../assets/lastfm-logo.svg";
 import { UserAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ColorModeSwitch from "../ColorModeSwitch";
 import SearchBar from "../SearchBar";
@@ -24,7 +24,9 @@ const HeaderSection = () => {
   };
   return (
     <HStack>
-      <Image src={logo} boxSize="50px" />
+      <Link to="/">
+        <Image src={logo} boxSize="60px" />
+      </Link>
       <SearchBar />
       <Flex
         flexDirection={{
@@ -39,6 +41,14 @@ const HeaderSection = () => {
             md: "0",
           }}
         >
+          <Button
+            mr={1}
+            size="xs"
+            colorScheme="blue"
+            onClick={(e) => handleSignOut(e)}
+          >
+            Sign out
+          </Button>
           <Text
             fontSize="sm"
             display={{
@@ -48,14 +58,6 @@ const HeaderSection = () => {
           >
             {session.user.email}
           </Text>
-          <Button
-            mr={1}
-            size="xs"
-            colorScheme="blue"
-            onClick={(e) => handleSignOut(e)}
-          >
-            Sign out
-          </Button>
         </HStack>
         <ColorModeSwitch />
       </Flex>
