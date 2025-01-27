@@ -9,6 +9,7 @@ import {
   FormControl,
   InputRightElement,
   InputGroup,
+  Container,
 } from "@chakra-ui/react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -41,7 +42,7 @@ const Signin = () => {
   };
 
   return (
-    <div>
+    <Container>
       <form onSubmit={(e) => handleSignIn(e)} className="max-w-md m-auto pt-24">
         <Heading className="font-bold pb-2">Sign in</Heading>
         <Text>
@@ -57,7 +58,7 @@ const Signin = () => {
             id="email-input"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
-            // mt={4}
+            mt={4}
             type="email"
           />
           <InputGroup size="md" my={5}>
@@ -85,7 +86,7 @@ const Signin = () => {
         </FormControl>
         {error && <p className="text-red-600 text-center pt-4">{error}</p>}
       </form>
-    </div>
+    </Container>
   );
 };
 

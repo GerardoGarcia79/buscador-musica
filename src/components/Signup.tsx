@@ -9,6 +9,7 @@ import {
   FormControl,
   InputGroup,
   InputRightElement,
+  Container,
 } from "@chakra-ui/react";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
@@ -41,7 +42,7 @@ const Signup = () => {
   };
 
   return (
-    <div>
+    <Container>
       <form onSubmit={(e) => handleSignUp(e)} className="max-w-md m-auto pt-24">
         <Heading className="font-bold pb-2">Sign up today!</Heading>
         <Text>
@@ -52,52 +53,40 @@ const Signup = () => {
             </span>
           </Link>
         </Text>
-        <div className="flex flex-col py-4">
-          <FormControl>
+        <FormControl>
+          <Input
+            id="email-input"
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+            mt={4}
+            type="email"
+          />
+          <InputGroup size="md" my={5}>
             <Input
-              id="email-input"
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              p={3}
-              mt={4}
-              type="email"
-            />
-            {/* <Input
               id="password-input"
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-              p={3}
-              mt={4}
-              type="password"
-            /> */}
-            <InputGroup size="md" my={5}>
-              <Input
-                id="password-input"
-                onChange={(e) => setPassword(e.target.value)}
-                pr="4.5rem"
-                type={show ? "text" : "password"}
-                placeholder="Enter password"
-              />
-              <InputRightElement width="3.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
-                  {show ? <FaEyeSlash /> : <FaEye />}
-                </Button>
-              </InputRightElement>
-            </InputGroup>
-            <Button
-              type="submit"
-              colorScheme="blue"
-              disabled={isLoading}
-              mt={4}
-              w="full"
-            >
-              Sign up
-            </Button>
-            {error && <p className="text-red-600 text-center pt-4">{error}</p>}
-          </FormControl>
-        </div>
+              pr="4.5rem"
+              type={show ? "text" : "password"}
+              placeholder="Enter password"
+            />
+            <InputRightElement width="3.5rem">
+              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? <FaEyeSlash /> : <FaEye />}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+          <Button
+            type="submit"
+            colorScheme="blue"
+            disabled={isLoading}
+            w="full"
+          >
+            Sign up
+          </Button>
+          {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+        </FormControl>
       </form>
-    </div>
+    </Container>
   );
 };
 
