@@ -1,10 +1,10 @@
 import { Button, Flex, HStack, Image, Text } from "@chakra-ui/react";
-import logo from "../../assets/lastfm-logo.svg";
-import { UserAuth } from "../../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import ColorModeSwitch from "../ColorModeSwitch";
-import SearchBar from "../SearchBar";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/lastfm-logo.svg";
+import { UserAuth } from "../context/AuthContext";
+import ColorModeSwitch from "./ColorModeSwitch";
+import SearchBar from "./SearchBar";
 
 const HeaderSection = () => {
   const [error, setError] = useState("");

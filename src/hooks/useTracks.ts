@@ -1,13 +1,6 @@
-import useData from "./useData";
+import { Track } from "../entities/Track";
 import useStore from "../store";
-import { Image } from "../entities/Image";
-
-export interface Track {
-  name: string;
-  artist: string;
-  url: string;
-  image: Image[];
-}
+import useData from "./useData";
 
 const useTracks = () => {
   const query = useStore((state) => state.search);

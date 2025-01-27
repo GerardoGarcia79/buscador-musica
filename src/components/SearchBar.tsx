@@ -1,9 +1,9 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useRef, useEffect } from "react";
-import { BsSearch } from "react-icons/bs";
-import useStore from "../store";
-import { useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
+import { useEffect, useRef } from "react";
+import { BsSearch } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
+import useStore from "../store";
 
 const SearchBar = () => {
   const ref = useRef<HTMLInputElement>(null);

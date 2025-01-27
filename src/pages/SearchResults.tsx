@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import useAlbums from "../../hooks/useAlbums";
-import useArtists from "../../hooks/useArtists";
-import useTracks from "../../hooks/useTracks";
-import { updateColumns } from "../../utils";
-import ResultsGrid from "./ResultsGrid";
 import { Box } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import ResultsGrid from "../components/ResultsGrid";
+import useAlbums from "../hooks/useAlbums";
+import useArtists from "../hooks/useArtists";
+import useTracks from "../hooks/useTracks";
+import { updateColumns } from "../utils";
 
 const SearchResults = () => {
   const {

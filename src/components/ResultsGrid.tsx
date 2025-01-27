@@ -1,11 +1,11 @@
 import { Box, Heading, HStack, SimpleGrid, Text } from "@chakra-ui/react";
+import { InfiniteData } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { Album } from "../entities/Album";
+import { Artist } from "../entities/Artist";
+import { Track } from "../entities/Track";
 import ResultItem from "./ResultItem";
 import ResultItemSkeleton from "./ResultItemSkeleton";
-import { Album } from "../../hooks/useAlbums";
-import { InfiniteData } from "@tanstack/react-query";
-import { Artist } from "../../hooks/useArtists";
-import { Track } from "../../hooks/useTracks";
 
 interface Props {
   item: "albums" | "artists" | "tracks";

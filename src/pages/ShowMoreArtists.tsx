@@ -1,5 +1,5 @@
-import useArtists from "../../hooks/useArtists";
-import ShowMore from "./ShowMore";
+import ShowMore from "../components/ShowMore";
+import useArtists from "../hooks/useArtists";
 
 const ShowMoreArtists = () => {
   const {

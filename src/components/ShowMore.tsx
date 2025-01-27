@@ -1,16 +1,16 @@
 import { Box, Button, Flex, Heading, SimpleGrid } from "@chakra-ui/react";
-import React from "react";
-import ResultItem from "./ResultItem";
-import ResultItemSkeleton from "./ResultItemSkeleton";
 import {
   FetchNextPageOptions,
   InfiniteData,
   InfiniteQueryObserverResult,
 } from "@tanstack/react-query";
-import { Album } from "../../hooks/useAlbums";
-import { Artist } from "../../hooks/useArtists";
-import { Track } from "../../hooks/useTracks";
+import React from "react";
 import { Link } from "react-router-dom";
+import { Album } from "../entities/Album";
+import { Artist } from "../entities/Artist";
+import { Track } from "../entities/Track";
+import ResultItem from "./ResultItem";
+import ResultItemSkeleton from "./ResultItemSkeleton";
 
 interface Props {
   item: "ALBUMS" | "ARTISTS" | "TRACKS";

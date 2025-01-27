@@ -1,6 +1,6 @@
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-import HeaderSection from "./components/HeaderSection.tsx/HeaderSection";
 import { Outlet } from "react-router-dom";
+import HeaderSection from "./components/HeaderSection";
 
 const Layout = () => {
   return (

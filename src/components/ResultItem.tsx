@@ -1,8 +1,8 @@
 import { Card, CardBody, Heading, Image, Text } from "@chakra-ui/react";
-import { Album } from "../../hooks/useAlbums";
-import { Track } from "../../hooks/useTracks";
-import { Artist } from "../../hooks/useArtists";
-import noImage from "../../assets/no-image.webp";
+import noImage from "../assets/no-image.webp";
+import { Album } from "../entities/Album";
+import { Artist } from "../entities/Artist";
+import { Track } from "../entities/Track";
 
 type Item = Album | Artist | Track;
 

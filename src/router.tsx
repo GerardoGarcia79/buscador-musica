@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Signup from "./components/Signup";
-import Signin from "./components/Signin";
 import PrivateRoute from "./components/PrivateRoute";
-import ShowMoreAlbums from "./components/MainSection/ShowMoreAlbums";
-import ShowMoreArtists from "./components/MainSection/ShowMoreArtists";
-import ShowMoreTracks from "./components/MainSection/ShowMoreTracks";
 import Layout from "./Layout";
-import SearchResults from "./components/MainSection/SearchResults";
-import ErrorPage from "./components/ErrorPage";
+import ErrorPage from "./pages/ErrorPage";
+import SearchResults from "./pages/SearchResults";
+import ShowMoreAlbums from "./pages/ShowMoreAlbums";
+import ShowMoreArtists from "./pages/ShowMoreArtists";
+import ShowMoreTracks from "./pages/ShowMoreTracks";
+import Signin from "./pages/Signin";
+import Signup from "./pages/Signup";
 
 export const router = createBrowserRouter([
   {

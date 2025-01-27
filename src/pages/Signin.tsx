@@ -1,28 +1,27 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
 import {
   Button,
+  Container,
+  FormControl,
   Heading,
   Input,
-  Text,
-  FormControl,
-  InputRightElement,
   InputGroup,
-  Container,
+  InputRightElement,
+  Text,
 } from "@chakra-ui/react";
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { UserAuth } from "../context/AuthContext";
 
 const Signin = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { signInUser } = UserAuth();
-  const navigate = useNavigate();
+  const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
+  const { signInUser } = UserAuth();
   const handleClick = () => setShow(!show);
+  const navigate = useNavigate();
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

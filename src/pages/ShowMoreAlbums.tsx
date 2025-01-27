@@ -1,25 +1,25 @@
-import useTracks from "../../hooks/useTracks";
-import ShowMore from "./ShowMore";
+import ShowMore from "../components/ShowMore";
+import useAlbums from "../hooks/useAlbums";
 
-const ShowMoreTracks = () => {
+const ShowMoreAlbums = () => {
   const {
-    data: tracks,
+    data: albums,
     isLoading,
     isFetchingNextPage,
-    hasNextPage,
     fetchNextPage,
-  } = useTracks();
+    hasNextPage,
+  } = useAlbums();
 
   return (
     <ShowMore
-      data={tracks}
+      data={albums}
       fetchNextPage={fetchNextPage}
       hasNextPage={hasNextPage}
       isFetchingNextPage={isFetchingNextPage}
       isLoading={isLoading}
-      item="TRACKS"
+      item="ALBUMS"
     />
   );
 };
 
-export default ShowMoreTracks;
+export default ShowMoreAlbums;
