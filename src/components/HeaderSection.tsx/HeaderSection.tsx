@@ -61,7 +61,11 @@ const HeaderSection = () => {
         </HStack>
         <ColorModeSwitch />
       </Flex>
-      {error && <p className="text-red-600 pt-2">{error}</p>}
+      {error && (
+        <Text color="red.400" pt={2}>
+          {error}
+        </Text>
+      )}
     </HStack>
   );
 };

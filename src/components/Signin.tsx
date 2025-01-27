@@ -42,15 +42,23 @@ const Signin = () => {
   };
 
   return (
-    <Container>
-      <form onSubmit={(e) => handleSignIn(e)} className="max-w-md m-auto pt-24">
-        <Heading className="font-bold pb-2">Sign in</Heading>
+    <Container
+      h="100vh"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignContent="center"
+    >
+      <form onSubmit={(e) => handleSignIn(e)}>
+        <Heading fontWeight="bold" pb={2}>
+          Sign in
+        </Heading>
         <Text>
           Don't have an account?{" "}
           <Link to="/signup">
-            <span className="underline underline-offset-2 inline">
+            <Text as="u" textUnderlineOffset={2} display="inline">
               Sign up!
-            </span>
+            </Text>
           </Link>
         </Text>
         <FormControl>
@@ -84,7 +92,11 @@ const Signin = () => {
             Sign in
           </Button>
         </FormControl>
-        {error && <p className="text-red-600 text-center pt-4">{error}</p>}
+        {error && (
+          <Text color="red.400" textAlign="center" pt={4}>
+            {error}
+          </Text>
+        )}
       </form>
     </Container>
   );
