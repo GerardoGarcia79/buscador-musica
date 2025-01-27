@@ -49,7 +49,7 @@ const SearchBar = () => {
   const debouncedSetSearchQuery = useRef(
     debounce((value: string) => {
       setSearchQuery(value);
-    }, 2000)
+    }, 1000)
   ).current;
 
   useEffect(() => {
